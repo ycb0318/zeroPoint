@@ -3,6 +3,9 @@ package com.example.derrick.zeropoint.mainFragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,9 +15,13 @@ import android.widget.Toast;
 
 import com.example.derrick.zeropoint.R;
 import com.example.derrick.zeropoint.adapter.GlideImageLoader;
+import com.example.derrick.zeropoint.adapter.RecyclerViewAdapter;
 import com.example.derrick.zeropoint.gson.MainDat;
 import com.example.derrick.zeropoint.gson.MainDatData;
 import com.example.derrick.zeropoint.gson.MainDatSlideList;
+import com.example.derrick.zeropoint.gson.MainInsuranceData;
+import com.example.derrick.zeropoint.gson.MainInsuranceList;
+import com.example.derrick.zeropoint.layoutManage.MyStaggeredGridLayoutManager;
 import com.example.derrick.zeropoint.util.DataHandle;
 import com.example.derrick.zeropoint.util.HttpUtil;
 import com.youth.banner.Banner;
@@ -25,8 +32,10 @@ import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.Callback;
+import okhttp3.FormBody;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
+import okhttp3.RequestBody;
 import okhttp3.Response;
 
 /**
@@ -39,6 +48,8 @@ public class MainFragment extends Fragment {
     private Banner banner;
     private View square;
     private TextView titleBarRightInfo;
+    private RecyclerView recyclerView;
+    private List<MainInsuranceData> insuranceList;
     private static final String TAG = "MainFragment";
 
     @Nullable
@@ -46,7 +57,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         square = inflater.inflate(R.layout.main_fragment,container,false);
         initView();
-//        initViewPager();
+//        initRecyclerView();
         return square;
 
     }
@@ -55,24 +66,29 @@ public class MainFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         getMainData();
-
+        getMainInsuranceData();
     }
 
 //    初始化view
     private void initView(){
         banner = (Banner) square.findViewById(R.id.banner);
         titleBarRightInfo = (TextView) square.findViewById(R.id.main_fragment_titlebar_right);
+        recyclerView = (RecyclerView) square.findViewById(R.id.main_fragment_recyclerview);
+    }
+//    初始化recyclerView
+    private void initRecyclerView(){
+//        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
+//        linearLayoutManager.setOrientation(LinearLayoutManager.HORIZONTAL);
+//        StaggeredGridLayoutManager staggeredGridLayoutManager = new StaggeredGridLayoutManager(3,StaggeredGridLayoutManager.VERTICAL);
+        MyStaggeredGridLayoutManager myStagger = new MyStaggeredGridLayoutManager(4,MyStaggeredGridLayoutManager.VERTICAL,true);
+        recyclerView.setLayoutManager(myStagger);
+        RecyclerViewAdapter viewAdapter = new RecyclerViewAdapter(insuranceList,getContext());
+        recyclerView.setAdapter(viewAdapter);
     }
 
-//    轮播图初始化
-    private void initViewPager(){
-        viewPagerUri.add("http://pic30.nipic.com/20130626/8174275_085522448172_2.jpg");
-        viewPagerUri.add("http://pic15.nipic.com/20110722/2912365_092519919000_2.jpg");
-        viewPagerUri.add("http://pic.58pic.com/58pic/12/64/27/55U58PICrdX.jpg");
-    }
+
 
 //    获取首页数据
-
     private void getMainData(){
         String requestMainAdress = "http://lf.upingou.com/apps/index/index";
 
@@ -105,6 +121,40 @@ public class MainFragment extends Fragment {
         });
 
     }
+
+//    获取保险公司列表
+    private void getMainInsuranceData(){
+        String requestAddress = "http://lf.upingou.com/apps/index/car_insurance_list";
+        RequestBody requestBody = new FormBody.Builder()
+                .add("businesser_id","12")
+                .build();
+        
+        HttpUtil.postOKHttpRequest(requestAddress, requestBody, new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getActivity().getApplicationContext(),"保险公司列表获取失败",Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                String responseText = response.body().string();
+                final MainInsuranceList mainInsuranceList = DataHandle.handleMainInsuranceResponse(responseText);
+                getActivity().runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        insuranceList = mainInsuranceList.data;
+                        initRecyclerView();
+                    }
+                });
+            }
+        });
+    }
+
     private void displayMain(MainDatData data){
         //信息数量
         titleBarRightInfo.setText(data.messageCount+"条消息");

@@ -30,7 +30,7 @@
                 <ImageView
                     android:layout_width="13dp"
                     android:layout_height="13dp"
-                    android:layout_marginRight="8dp"
+                    android:layout_marginRight="5dp"
                     android:src="@mipmap/zero_mine_top_message"/>
                 <TextView
                     android:id="@+id/main_fragment_titlebar_right"
