@@ -30,6 +30,13 @@
             android:layout_height="wrap_content">
 
         </android.support.v7.widget.RecyclerView>
-        <include layout="@layout/main_fragment_storebar"/>
+        <!--<include layout="@layout/main_fragment_storebar"/>-->
+        <include layout="@layout/main_fragment_partnerbar" />
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/main_fragment_partner_recyclerview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+        </android.support.v7.widget.RecyclerView>
     </LinearLayout>
 </ScrollView>

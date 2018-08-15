@@ -13,4 +13,6 @@ public class MainDatData {
     public int messageCount;
     @SerializedName("slide_list")
     public List<MainDatSlideList> slideLists;
+    @SerializedName("businesser_list")
+    public List<MainDatPartner> storeList;
 }
