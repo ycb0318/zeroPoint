@@ -17,10 +17,12 @@ import com.example.derrick.zeropoint.R;
 import com.example.derrick.zeropoint.adapter.GlideImageLoader;
 import com.example.derrick.zeropoint.adapter.RecyclerViewAdapter;
 import com.example.derrick.zeropoint.adapter.RecyclerViewPartnerAdapter;
+import com.example.derrick.zeropoint.adapter.RecyclerViewStoreAdapter;
 import com.example.derrick.zeropoint.gson.MainDat;
 import com.example.derrick.zeropoint.gson.MainDatData;
 import com.example.derrick.zeropoint.gson.MainDatPartner;
 import com.example.derrick.zeropoint.gson.MainDatSlideList;
+import com.example.derrick.zeropoint.gson.MainDatStoreList;
 import com.example.derrick.zeropoint.gson.MainInsuranceData;
 import com.example.derrick.zeropoint.gson.MainInsuranceList;
 import com.example.derrick.zeropoint.layoutManage.MyStaggeredGridLayoutManager;
@@ -51,8 +53,10 @@ public class MainFragment extends Fragment {
     private View square;
     private TextView titleBarRightInfo;
     private RecyclerView recyclerView;
+    private RecyclerView recyclerViewStore;
     private RecyclerView partnerRecycleView;
     private List<MainInsuranceData> insuranceList;
+    private List<MainDatStoreList> storeLists;
     private List<MainDatPartner> partnerList;
     private static final String TAG = "MainFragment";
 
@@ -78,8 +82,9 @@ public class MainFragment extends Fragment {
         titleBarRightInfo = (TextView) square.findViewById(R.id.main_fragment_titlebar_right);
         recyclerView = (RecyclerView) square.findViewById(R.id.main_fragment_recyclerview);
         partnerRecycleView = (RecyclerView) square.findViewById(R.id.main_fragment_partner_recyclerview);
+        recyclerViewStore = (RecyclerView) square.findViewById(R.id.main_fragment_recyclerview_store);
     }
-//    初始化recyclerView
+//    初始化recyclerView 保险公司列表;
     private void initRecyclerView(){
 
 //        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -90,7 +95,17 @@ public class MainFragment extends Fragment {
         recyclerView.setLayoutManager(myStagger);
         RecyclerViewAdapter viewAdapter = new RecyclerViewAdapter(insuranceList,getContext());
         recyclerView.setAdapter(viewAdapter);
+
     }
+
+    private void initRecyclerViewStore(){
+        MyStaggeredGridLayoutManager myStaggerStore = new MyStaggeredGridLayoutManager(2,MyStaggeredGridLayoutManager.VERTICAL,true);
+        recyclerViewStore.setLayoutManager(myStaggerStore);
+
+        RecyclerViewStoreAdapter viewAdapter = new RecyclerViewStoreAdapter(storeLists,getContext());
+        recyclerViewStore.setAdapter(viewAdapter);
+    }
+
 
 
 
@@ -119,6 +134,7 @@ public class MainFragment extends Fragment {
                         if(mainDat != null && "1".equals(mainDat.status)){
 //                            Log.i(TAG, "run: "+mainDat.message);
                             displayMain(mainDat.data);
+                            initRecyclerViewStore();
                         }
 
                     }
@@ -163,6 +179,7 @@ public class MainFragment extends Fragment {
 
     private void displayMain(MainDatData data){
         partnerList = data.storeList;
+        storeLists = data.businessTypes;
         //信息数量
         titleBarRightInfo.setText(data.messageCount+"条消息");
 

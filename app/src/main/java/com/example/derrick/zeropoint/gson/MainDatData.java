@@ -15,4 +15,7 @@ public class MainDatData {
     public List<MainDatSlideList> slideLists;
     @SerializedName("businesser_list")
     public List<MainDatPartner> storeList;
+    @SerializedName("business_types")
+    public List<MainDatStoreList> businessTypes;
 }
+
