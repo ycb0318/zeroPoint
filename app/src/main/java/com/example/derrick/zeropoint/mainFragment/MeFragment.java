@@ -14,6 +14,7 @@ import com.example.derrick.zeropoint.R;
  */
 
 public class MeFragment extends Fragment {
+
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
