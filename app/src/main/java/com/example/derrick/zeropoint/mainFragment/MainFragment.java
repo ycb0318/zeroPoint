@@ -111,7 +111,7 @@ public class MainFragment extends Fragment {
 
 //    获取首页数据
     private void getMainData(){
-        String requestMainAdress = "http://lf.upingou.com/apps/index/index";
+        String requestMainAdress = HttpUtil.httpFetchCommonUrl.concat("/apps/index/index");
 
         HttpUtil.sendOKHttpRequest(requestMainAdress, new Callback() {
             @Override
@@ -146,12 +146,12 @@ public class MainFragment extends Fragment {
 
 //    获取保险公司列表
     private void getMainInsuranceData(){
-        String requestAddress = "http://lf.upingou.com/apps/index/car_insurance_list";
+        String requestAddress = HttpUtil.httpFetchCommonUrl.concat("/apps/index/car_insurance_list");
         RequestBody requestBody = new FormBody.Builder()
                 .add("businesser_id","12")
                 .build();
         
-        HttpUtil.postOKHttpRequest(requestAddress, requestBody, new Callback() {
+        HttpUtil.postOKHttpRequest(requestAddress, "",requestBody, new Callback() {
             @Override
             public void onFailure(Call call, IOException e) {
                 getActivity().runOnUiThread(new Runnable() {

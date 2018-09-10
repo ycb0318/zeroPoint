@@ -37,9 +37,10 @@
                         android:textSize="14sp"
                         android:layout_marginBottom="5dp"/>
                     <TextView
+                        android:id="@+id/wallet_canuse_ed"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="10000.00"
+                        android:text="10.00"
                         android:textColor="#333"
                         android:textSize="20sp"/>
 
@@ -93,6 +94,7 @@
                     android:textSize="14sp"
                     android:layout_marginBottom="5dp"/>
                 <TextView
+                    android:id="@+id/wallet_total_ed"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="10000.00"

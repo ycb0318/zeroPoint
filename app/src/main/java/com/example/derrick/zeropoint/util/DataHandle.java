@@ -2,9 +2,12 @@ package com.example.derrick.zeropoint.util;
 
 import android.util.Log;
 
+import com.example.derrick.zeropoint.gson.GetCodeDat;
+import com.example.derrick.zeropoint.gson.LoginDat;
 import com.example.derrick.zeropoint.gson.MainDat;
 import com.example.derrick.zeropoint.gson.MainDatStoreList;
 import com.example.derrick.zeropoint.gson.MainInsuranceList;
+import com.example.derrick.zeropoint.gson.WalletMainDat;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
@@ -58,12 +61,48 @@ public class DataHandle {
 
         return null;
     }
-
+    //处理首页保险信息数据
     public static MainInsuranceList handleMainInsuranceResponse(String response){
         try {
             JSONObject jsonObject = new JSONObject(response);
             String mainDatContent = jsonObject.toString();
             return new Gson().fromJson(mainDatContent,MainInsuranceList.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    //处理获取验证码数据
+    public static GetCodeDat handleGetCodeResponse(String response){
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            String mainDatContent = jsonObject.toString();
+            return new Gson().fromJson(mainDatContent,GetCodeDat.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    //处理登录数据
+    public static LoginDat handleLoginDatResponse(String response){
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            String mainDatContent = jsonObject.toString();
+            return new Gson().fromJson(mainDatContent,LoginDat.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    //处理钱包页面数据
+    public static WalletMainDat handleWalletDatResponse(String response){
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            String mainDatContent = jsonObject.toString();
+            return new Gson().fromJson(mainDatContent,WalletMainDat.class);
         }catch (Exception e){
             e.printStackTrace();
         }
