@@ -8,5 +8,44 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <include layout="@layout/me_fragment_titlebar"/>
+        <LinearLayout
+            android:layout_margin="15dp"
+            android:layout_marginTop="0dp"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:background="#f8f8f8"
+            android:gravity="center_vertical"
+            android:paddingLeft="10dp">
+            <LinearLayout
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:background="@drawable/mainfrag_store_item_radius">
+                <ImageView
+                    android:id="@+id/me_fragment_partner_recyclerview_image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:scaleType="centerCrop"
+                    android:src="@mipmap/ic_launcher"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="10dp"
+                >
+                <TextView
+                    android:id="@+id/me_user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="程咬金"/>
+                <TextView
+                    android:id="@+id/me_user_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:text="账号：15726818171"/>
+            </LinearLayout>
+        </LinearLayout>
     </LinearLayout>
 </ScrollView>
