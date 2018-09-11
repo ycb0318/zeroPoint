@@ -8,12 +8,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
 import com.example.derrick.zeropoint.R;
 import com.example.derrick.zeropoint.gson.MeMainDat;
 import com.example.derrick.zeropoint.gson.WalletMainDat;
+import com.example.derrick.zeropoint.layoutManage.GlideRoundTransform;
 import com.example.derrick.zeropoint.util.DataHandle;
 import com.example.derrick.zeropoint.util.HttpUtil;
 
@@ -33,7 +36,12 @@ public class MeFragment extends Fragment {
 
     private TextView userNameTxt;
     private TextView userPhoneTxt;
+    private ImageView userPic;
+    private TextView userReal;
+    private TextView userBank;
+    private TextView userEditPhone;
     private View square;
+
 
 
     @Nullable
@@ -54,6 +62,10 @@ public class MeFragment extends Fragment {
     private void initView(){
         userNameTxt = (TextView) square.findViewById(R.id.me_user_name);
         userPhoneTxt = (TextView) square.findViewById(R.id.me_user_phone);
+        userPic = (ImageView) square.findViewById(R.id.me_fragment_user_pic);
+        userReal = (TextView) square.findViewById(R.id.me_real_name_right);
+        userBank = (TextView) square.findViewById(R.id.me_bank_right);
+        userEditPhone = (TextView) square.findViewById(R.id.me_edit_phone_right);
     }
     private void getMeMainDat(){
         String requestAddress = HttpUtil.httpFetchCommonUrl.concat("/apps/User/index");
@@ -102,5 +114,30 @@ public class MeFragment extends Fragment {
     private void displayMe(MeMainDat dat){
         userNameTxt.setText(dat.dataset.user.nick_name);
         userPhoneTxt.setText(dat.dataset.user.user_name);
+        userEditPhone.setText(dat.dataset.user.user_name);
+        String uri = HttpUtil.httpFetchCommonUrl+dat.dataset.user.user_avater;
+        Glide.with(getContext()).load(uri).bitmapTransform(new GlideRoundTransform(getContext())).into(userPic);
+        String realName = "";
+        switch (dat.dataset.user.if_realname){
+            case 0:
+                realName = "未认证";
+                break;
+            case 1:
+                realName = "审核中";
+                break;
+            case 2:
+                realName = "已实名";
+                break;
+            case -1:
+                realName = "申请失败";
+                break;
+
+        }
+        userReal.setText(realName);
+        String cardST = "未绑定";
+        if(dat.dataset.user.bank_count > 0){
+            cardST = dat.dataset.user.bank_count+"张";
+        }
+        userBank.setText(cardST);
     }
 }

@@ -20,6 +20,8 @@ public class MeMainDat {
             public String user_name;
             public String nick_name;
             public String user_avater;
+            public int if_realname;
+            public int bank_count;
         }
 
 

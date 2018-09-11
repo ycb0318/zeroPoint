@@ -21,7 +21,7 @@
                 android:layout_height="60dp"
                 android:background="@drawable/mainfrag_store_item_radius">
                 <ImageView
-                    android:id="@+id/me_fragment_partner_recyclerview_image"
+                    android:id="@+id/me_fragment_user_pic"
                     android:layout_width="60dp"
                     android:layout_height="60dp"
                     android:scaleType="centerCrop"
@@ -47,5 +47,9 @@
                     android:text="账号：15726818171"/>
             </LinearLayout>
         </LinearLayout>
+        <include layout="@layout/me_fragment_real_name_bar"/>
+        <include layout="@layout/me_fragment_bank_card_bar"/>
+        <include layout="@layout/me_fragment_set_pass_bar"/>
+        <include layout="@layout/me_fragment_edit_phone_bar"/>
     </LinearLayout>
 </ScrollView>
