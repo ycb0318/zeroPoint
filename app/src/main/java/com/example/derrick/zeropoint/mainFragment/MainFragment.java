@@ -1,5 +1,6 @@
 package com.example.derrick.zeropoint.mainFragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -10,9 +11,11 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.derrick.zeropoint.MainMessageActivity;
 import com.example.derrick.zeropoint.R;
 import com.example.derrick.zeropoint.adapter.GlideImageLoader;
 import com.example.derrick.zeropoint.adapter.RecyclerViewAdapter;
@@ -58,6 +61,7 @@ public class MainFragment extends Fragment {
     private List<MainInsuranceData> insuranceList;
     private List<MainDatStoreList> storeLists;
     private List<MainDatPartner> partnerList;
+    private LinearLayout messageLinear;
     private static final String TAG = "MainFragment";
 
     @Nullable
@@ -65,6 +69,7 @@ public class MainFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         square = inflater.inflate(R.layout.main_fragment,container,false);
         initView();
+        initClick();
         return square;
 
     }
@@ -83,6 +88,17 @@ public class MainFragment extends Fragment {
         recyclerView = (RecyclerView) square.findViewById(R.id.main_fragment_recyclerview);
         partnerRecycleView = (RecyclerView) square.findViewById(R.id.main_fragment_partner_recyclerview);
         recyclerViewStore = (RecyclerView) square.findViewById(R.id.main_fragment_recyclerview_store);
+        messageLinear = (LinearLayout) square.findViewById(R.id.main_fragment_message_click);
+    }
+
+    private void initClick(){
+        messageLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), MainMessageActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 //    初始化recyclerView 保险公司列表;
     private void initRecyclerView(){

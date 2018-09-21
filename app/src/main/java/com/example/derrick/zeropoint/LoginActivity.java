@@ -172,7 +172,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = getSharedPreferences("userInfo",MODE_PRIVATE).edit();
         editor.putString("token",dat.dataset.token);
         editor.apply();
-        Intent intent = new Intent(new EventKey().walletRefresh);
+        Intent intent = new Intent(new EventKey().loginSuccess);
         sendBroadcast(intent);
         LoginActivity.this.finish();
 

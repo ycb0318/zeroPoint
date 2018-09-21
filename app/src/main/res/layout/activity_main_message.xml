@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <include layout="@layout/common_nav_bar"/>
+        <include layout="@layout/main_fragment_message"/>
+        <include layout="@layout/main_fragment_message_item"/>
+        <include layout="@layout/main_fragment_message_item2"/>
+        <include layout="@layout/main_fragment_message_item3"/>
+    </LinearLayout>
+</ScrollView>

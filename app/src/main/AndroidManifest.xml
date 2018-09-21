@@ -20,7 +20,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".MeMoreActivity" />
+        <activity android:name=".MainMessageActivity" />
+        <activity android:name=".InsuranceWebActivity" />
+        <activity android:name=".mainActivity.StoreListActivity" />
+        <activity android:name=".mainActivity.PartnerDetailActivity"></activity>
     </application>
 
 </manifest>

@@ -1,6 +1,7 @@
 package com.example.derrick.zeropoint.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.derrick.zeropoint.R;
 import com.example.derrick.zeropoint.gson.MainDatStoreList;
+import com.example.derrick.zeropoint.mainActivity.StoreListActivity;
 import com.example.derrick.zeropoint.util.HttpUtil;
 
 import java.util.List;
@@ -31,7 +33,15 @@ public class RecyclerViewStoreAdapter extends RecyclerView.Adapter<RecyclerViewS
 
     @Override
     public MyHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        RecyclerViewStoreAdapter.MyHolder myViewHolder = new RecyclerViewStoreAdapter.MyHolder(LayoutInflater.from(context).inflate(R.layout.main_fragement_store_list_recyclerview_item,parent,false));
+        final RecyclerViewStoreAdapter.MyHolder myViewHolder = new RecyclerViewStoreAdapter.MyHolder(LayoutInflater.from(context).inflate(R.layout.main_fragement_store_list_recyclerview_item,parent,false));
+        myViewHolder.storeView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                int posi = myViewHolder.getAdapterPosition();
+                MainDatStoreList item = myList.get(posi);
+                itemClick(item);
+            }
+        });
         return myViewHolder;
     }
 
@@ -48,11 +58,19 @@ public class RecyclerViewStoreAdapter extends RecyclerView.Adapter<RecyclerViewS
        return myList.size();
     }
 
+    private void itemClick(MainDatStoreList vie){
+        Intent intent = new Intent(context, StoreListActivity.class);
+        intent.putExtra("typeID",vie.typeID);
+        context.startActivity(intent);
+    }
+
     class MyHolder extends RecyclerView.ViewHolder{
         ImageView storeImg;
         TextView storeTxt;
+        View storeView;
         public MyHolder(View itemView) {
             super(itemView);
+            storeView = itemView;
             storeImg = (ImageView) itemView.findViewById(R.id.recyclerView_store_img);
             storeTxt = (TextView) itemView.findViewById(R.id.recyclerView_store_txt);
         }

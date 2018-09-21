@@ -82,7 +82,7 @@ public class WalletFragment extends Fragment {
     }
 
     private void initBroadCast(){
-        IntentFilter intentFilter = new IntentFilter(new EventKey().walletRefresh);
+        IntentFilter intentFilter = new IntentFilter(new EventKey().loginSuccess);
         getActivity().getApplicationContext().registerReceiver(receiver,intentFilter);
     }
 
@@ -96,9 +96,6 @@ public class WalletFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }else{
-                    SharedPreferences.Editor editor = getActivity().getSharedPreferences("userInfo",getActivity().MODE_PRIVATE).edit();
-                    editor.clear();
-                    editor.apply();
                     Toast.makeText(getActivity(),"开始扫描...",Toast.LENGTH_SHORT).show();
                 }
 

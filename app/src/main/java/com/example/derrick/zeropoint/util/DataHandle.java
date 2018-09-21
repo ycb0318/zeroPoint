@@ -7,7 +7,10 @@ import com.example.derrick.zeropoint.gson.LoginDat;
 import com.example.derrick.zeropoint.gson.MainDat;
 import com.example.derrick.zeropoint.gson.MainDatStoreList;
 import com.example.derrick.zeropoint.gson.MainInsuranceList;
+import com.example.derrick.zeropoint.gson.MainMessageDat;
 import com.example.derrick.zeropoint.gson.MeMainDat;
+import com.example.derrick.zeropoint.gson.StoreListDat;
+import com.example.derrick.zeropoint.gson.StoreListTypeDat;
 import com.example.derrick.zeropoint.gson.WalletMainDat;
 import com.google.gson.Gson;
 
@@ -116,6 +119,82 @@ public class DataHandle {
             JSONObject jsonObject = new JSONObject(response);
             String mainDatContent = jsonObject.toString();
             return new Gson().fromJson(mainDatContent,MeMainDat.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    //处理消息页面数据
+    public static MainMessageDat handleMainMessageDatResponse(String response){
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            String mainDatContent = jsonObject.toString();
+            return new Gson().fromJson(mainDatContent,MainMessageDat.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    //处理商铺类型数据
+    public static StoreListTypeDat handleStoreListTypeDatResponse(String response){
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+
+
+            JSONArray arr = new JSONArray();
+            JSONObject obj = jsonObject.getJSONObject("data");
+
+            Iterator<String> iter = obj.keys();
+            while(iter.hasNext()){
+                String key1 = iter.next();
+                Log.i(TAG, "handleMainDataResponse: "+key1);
+                String value1 = obj.getString(key1);
+                JSONObject val = new JSONObject(value1);
+                arr.put(val);
+                Log.i(TAG, "handleMainDataResponse: "+value1);
+            }
+
+            jsonObject.put("data",arr);
+
+
+
+            String mainDatContent = jsonObject.toString();
+            return new Gson().fromJson(mainDatContent,StoreListTypeDat.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    //处理商铺列表数据
+    public static StoreListDat handleStoreDatTypeDatResponse(String response){
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+
+
+            JSONArray arr = new JSONArray();
+            JSONObject obj = jsonObject.getJSONObject("data");
+
+
+
+            Iterator<String> iter = obj.keys();
+            while(iter.hasNext()){
+                String key1 = iter.next();
+                Log.i(TAG, "handleMainDataResponse: "+key1);
+                String value1 = obj.getString(key1);
+                JSONObject val = new JSONObject(value1);
+                arr.put(val);
+                Log.i(TAG, "handleMainDataResponse: "+value1);
+            }
+
+            jsonObject.put("data",arr);
+
+
+
+            String mainDatContent = jsonObject.toString();
+            return new Gson().fromJson(mainDatContent,StoreListDat.class);
         }catch (Exception e){
             e.printStackTrace();
         }

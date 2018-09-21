@@ -6,7 +6,7 @@ package com.example.derrick.zeropoint.util;
 
 public class EventKey {
 
-    public String walletRefresh = "wallet_zero_point_broad_cast";
+    public String loginSuccess = "wallet_zero_point_broad_cast";
 
     public EventKey() {
     }

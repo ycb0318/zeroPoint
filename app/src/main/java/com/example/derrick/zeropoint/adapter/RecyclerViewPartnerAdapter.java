@@ -1,6 +1,7 @@
 package com.example.derrick.zeropoint.adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.media.Image;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
@@ -14,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.example.derrick.zeropoint.R;
 import com.example.derrick.zeropoint.gson.MainDatPartner;
 import com.example.derrick.zeropoint.layoutManage.GlideRoundTransform;
+import com.example.derrick.zeropoint.mainActivity.PartnerDetailActivity;
 import com.example.derrick.zeropoint.util.HttpUtil;
 
 import java.util.List;
@@ -35,6 +37,14 @@ public class RecyclerViewPartnerAdapter extends RecyclerView.Adapter<RecyclerVie
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.main_fragment_partner_item,parent,false));
+        myViewHolder.partnerView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(context, PartnerDetailActivity.class);
+                context.startActivity(intent);
+            }
+        });
+
         return myViewHolder;
     }
 
@@ -71,9 +81,11 @@ public class RecyclerViewPartnerAdapter extends RecyclerView.Adapter<RecyclerVie
         ImageView imageView;
         TextView textViewName;
         TextView textViewIntro;
+        View partnerView;
 
         public MyViewHolder(View itemView) {
             super(itemView);
+            partnerView = itemView;
             imageView = (ImageView) itemView.findViewById(R.id.main_fragment_partner_recyclerview_image);
             textViewName = (TextView) itemView.findViewById(R.id.main_fragment_partner_recyclerview_storeName);
             textViewIntro = (TextView) itemView.findViewById(R.id.main_fragment_partner_recyclerview_storeIntro);

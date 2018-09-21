@@ -1,6 +1,9 @@
 package com.example.derrick.zeropoint.mainFragment;
 
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -9,15 +12,18 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.derrick.zeropoint.MeMoreActivity;
 import com.example.derrick.zeropoint.R;
 import com.example.derrick.zeropoint.gson.MeMainDat;
 import com.example.derrick.zeropoint.gson.WalletMainDat;
 import com.example.derrick.zeropoint.layoutManage.GlideRoundTransform;
 import com.example.derrick.zeropoint.util.DataHandle;
+import com.example.derrick.zeropoint.util.EventKey;
 import com.example.derrick.zeropoint.util.HttpUtil;
 
 import java.io.IOException;
@@ -40,6 +46,7 @@ public class MeFragment extends Fragment {
     private TextView userReal;
     private TextView userBank;
     private TextView userEditPhone;
+    private LinearLayout moreLinear;
     private View square;
 
 
@@ -55,9 +62,15 @@ public class MeFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         initView();
+        initClick();
+        initBroadCast();
         getMeMainDat();
     }
 
+    private void initBroadCast(){
+        IntentFilter intentFilter = new IntentFilter(new EventKey().loginSuccess);
+        getActivity().getApplicationContext().registerReceiver(receiver,intentFilter);
+    }
 
     private void initView(){
         userNameTxt = (TextView) square.findViewById(R.id.me_user_name);
@@ -66,7 +79,20 @@ public class MeFragment extends Fragment {
         userReal = (TextView) square.findViewById(R.id.me_real_name_right);
         userBank = (TextView) square.findViewById(R.id.me_bank_right);
         userEditPhone = (TextView) square.findViewById(R.id.me_edit_phone_right);
+        moreLinear = (LinearLayout) square.findViewById(R.id.me_more_bar);
     }
+
+    private void initClick(){
+        moreLinear.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+//                Toast.makeText(getActivity(),"111",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(getActivity(), MeMoreActivity.class);
+                startActivity(intent);
+            }
+        });
+    }
+
     private void getMeMainDat(){
         String requestAddress = HttpUtil.httpFetchCommonUrl.concat("/apps/User/index");
 
@@ -140,4 +166,11 @@ public class MeFragment extends Fragment {
         }
         userBank.setText(cardST);
     }
+    private BroadcastReceiver receiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+//            Toast.makeText(getActivity().getApplicationContext(),"11111",Toast.LENGTH_SHORT).show();
+            getMeMainDat();
+        }
+    };
 }
