@@ -36,11 +36,14 @@ public class RecyclerViewPartnerAdapter extends RecyclerView.Adapter<RecyclerVie
 
     @Override
     public MyViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.main_fragment_partner_item,parent,false));
+        final MyViewHolder myViewHolder = new MyViewHolder(LayoutInflater.from(context).inflate(R.layout.main_fragment_partner_item,parent,false));
         myViewHolder.partnerView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                int posi = myViewHolder.getAdapterPosition();
+                MainDatPartner item = myList.get(posi);
                 Intent intent = new Intent(context, PartnerDetailActivity.class);
+                intent.putExtra("bussID",item.businesser_id);
                 context.startActivity(intent);
             }
         });

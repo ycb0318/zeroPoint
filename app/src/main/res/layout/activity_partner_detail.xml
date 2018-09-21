@@ -1,16 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-    <LinearLayout
-        android:orientation="vertical"
+
+<!--<ScrollView-->
+    <!--xmlns:android="http://schemas.android.com/apk/res/android"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent">-->
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
-        <include layout="@layout/common_nav_bar" />
-        <include layout="@layout/main_partner_detail_bar" />
+        android:layout_height="match_parent"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical">
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+            <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                xmlns:app="http://schemas.android.com/apk/res-auto"
+                android:orientation="vertical"
+                android:background="#f5f5f5">
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#fff">
+                    <include layout="@layout/common_nav_bar" />
+                    <include layout="@layout/main_partner_detail_bar" />
+                </LinearLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="10dp"
+                    android:paddingTop="0dp"
+                    android:background="#fff">
+                    <com.youth.banner.Banner
+                        xmlns:app="http://schemas.android.com/apk/res-auto"
+                        android:id="@+id/partner_banner_img"
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        app:delay_time="2000"
+                        app:indicator_width="10dp"
+                        app:indicator_height="10dp"
+                        >
+                    </com.youth.banner.Banner>
+                </FrameLayout>
+
+                <include layout="@layout/main_partner_detail_body_pl"/>
+                <include layout="@layout/main_partner_detail_body_bar"/>
+                <include layout="@layout/main_partner_detail_body_bar_connect"/>
+            </LinearLayout>
+
+        </ScrollView>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="#fcec62"
+            android:gravity="center"
+            android:layout_gravity="bottom"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="分期买单"/>
+        </LinearLayout>
     </LinearLayout>
-
-
-</LinearLayout>
+<!--</ScrollView>-->

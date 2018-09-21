@@ -9,5 +9,6 @@ import java.util.List;
 public class MainDatPartner {
     public String businesser_name;
     public String businesser_introduce;
+    public String businesser_id;
     public List<String> businesser_photo;
 }

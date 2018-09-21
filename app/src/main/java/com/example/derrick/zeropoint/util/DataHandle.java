@@ -9,6 +9,7 @@ import com.example.derrick.zeropoint.gson.MainDatStoreList;
 import com.example.derrick.zeropoint.gson.MainInsuranceList;
 import com.example.derrick.zeropoint.gson.MainMessageDat;
 import com.example.derrick.zeropoint.gson.MeMainDat;
+import com.example.derrick.zeropoint.gson.PartnerDetailDat;
 import com.example.derrick.zeropoint.gson.StoreListDat;
 import com.example.derrick.zeropoint.gson.StoreListTypeDat;
 import com.example.derrick.zeropoint.gson.WalletMainDat;
@@ -195,6 +196,18 @@ public class DataHandle {
 
             String mainDatContent = jsonObject.toString();
             return new Gson().fromJson(mainDatContent,StoreListDat.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+    //处理合作伙伴详情的数据
+    public static PartnerDetailDat handlePartnerDetailDatResponse(String response){
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+            String mainDatContent = jsonObject.toString();
+            return new Gson().fromJson(mainDatContent,PartnerDetailDat.class);
         }catch (Exception e){
             e.printStackTrace();
         }
