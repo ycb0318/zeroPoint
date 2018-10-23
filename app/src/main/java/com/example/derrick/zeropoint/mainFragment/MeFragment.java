@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.derrick.zeropoint.MeMoreActivity;
 import com.example.derrick.zeropoint.R;
+import com.example.derrick.zeropoint.RealNameApprove;
 import com.example.derrick.zeropoint.gson.MeMainDat;
 import com.example.derrick.zeropoint.gson.WalletMainDat;
 import com.example.derrick.zeropoint.layoutManage.GlideRoundTransform;
@@ -48,6 +49,7 @@ public class MeFragment extends Fragment {
     private TextView userEditPhone;
     private LinearLayout moreLinear;
     private View square;
+    private LinearLayout realNameLinearLayout;
 
 
 
@@ -80,6 +82,7 @@ public class MeFragment extends Fragment {
         userBank = (TextView) square.findViewById(R.id.me_bank_right);
         userEditPhone = (TextView) square.findViewById(R.id.me_edit_phone_right);
         moreLinear = (LinearLayout) square.findViewById(R.id.me_more_bar);
+        realNameLinearLayout = (LinearLayout) square.findViewById(R.id.me_real_name_bar);
     }
 
     private void initClick(){
@@ -91,6 +94,16 @@ public class MeFragment extends Fragment {
                 startActivity(intent);
             }
         });
+
+        realNameLinearLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getActivity(), RealNameApprove.class);
+                startActivity(intent);
+            }
+        });
+
+
     }
 
     private void getMeMainDat(){

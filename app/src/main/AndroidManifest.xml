@@ -26,7 +26,8 @@
         <activity android:name=".MainMessageActivity" />
         <activity android:name=".InsuranceWebActivity" />
         <activity android:name=".mainActivity.StoreListActivity" />
-        <activity android:name=".mainActivity.PartnerDetailActivity"></activity>
+        <activity android:name=".mainActivity.PartnerDetailActivity" />
+        <activity android:name=".RealNameApprove"></activity>
     </application>
 
 </manifest>
