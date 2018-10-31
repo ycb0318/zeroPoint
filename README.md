@@ -11,7 +11,7 @@ zeroPoint
 
 <div align=center>
   <img src="https://github.com/ycb0318/zeroPoint/blob/master/app/screenshot/3.jpeg" width="375" alt="首页"/>
-  <img src="https://github.com/ycb0318/zeroPoint/blob/master/app/screenshot/4.jpeg" width="375" alt="首页"/>
+  <img src="https://github.com/ycb0318/zeroPoint/blob/master/app/screenshot/4.png" width="375" alt="首页"/>
 </div>  
 
 <div align=center>
