@@ -6,7 +6,9 @@
     android:orientation="vertical"
     android:paddingLeft="15dp"
     android:paddingTop="15dp"
-    android:paddingBottom="15dp">
+    android:paddingBottom="15dp"
+    android:id="@+id/include_partner_bar"
+    android:visibility="gone">
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

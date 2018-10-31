@@ -23,7 +23,7 @@
                 >
             </com.youth.banner.Banner>
         </FrameLayout>
-        <include layout="@layout/main_fragment_insurancebar"/>
+        <include layout="@layout/main_fragment_insurancebar" />
         <android.support.v7.widget.RecyclerView
             android:id="@+id/main_fragment_recyclerview"
             android:layout_width="match_parent"

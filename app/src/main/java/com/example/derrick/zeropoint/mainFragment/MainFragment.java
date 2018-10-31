@@ -63,6 +63,9 @@ public class MainFragment extends Fragment {
     private List<MainDatPartner> partnerList;
     private LinearLayout messageLinear;
     private static final String TAG = "MainFragment";
+    private View includeInsuranceBar;
+    private View includeStoreBar;
+    private View includePartnerBar;
 
     @Nullable
     @Override
@@ -89,6 +92,10 @@ public class MainFragment extends Fragment {
         partnerRecycleView = (RecyclerView) square.findViewById(R.id.main_fragment_partner_recyclerview);
         recyclerViewStore = (RecyclerView) square.findViewById(R.id.main_fragment_recyclerview_store);
         messageLinear = (LinearLayout) square.findViewById(R.id.main_fragment_message_click);
+
+        includeInsuranceBar = (View) square.findViewById(R.id.include_insurance_bar);
+        includeStoreBar = (View) square.findViewById(R.id.include_store_bar);
+        includePartnerBar = (View) square.findViewById(R.id.include_partner_bar);
     }
 
     private void initClick(){
@@ -111,6 +118,9 @@ public class MainFragment extends Fragment {
         recyclerView.setLayoutManager(myStagger);
         RecyclerViewAdapter viewAdapter = new RecyclerViewAdapter(insuranceList,getContext());
         recyclerView.setAdapter(viewAdapter);
+
+        includeInsuranceBar.setVisibility(View.VISIBLE);//
+
 
     }
 
@@ -198,6 +208,10 @@ public class MainFragment extends Fragment {
         storeLists = data.businessTypes;
         //信息数量
         titleBarRightInfo.setText(data.messageCount+"条消息");
+
+        //
+        includeStoreBar.setVisibility(View.VISIBLE);//
+        includePartnerBar.setVisibility(View.VISIBLE);//
 
         //图片轮播
         List<MainDatSlideList> arr = data.slideLists;
