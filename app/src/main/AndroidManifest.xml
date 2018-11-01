@@ -5,6 +5,8 @@
     <!-- if you want to load images from the internet -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
 
     <application
         android:allowBackup="true"
@@ -27,7 +29,8 @@
         <activity android:name=".InsuranceWebActivity" />
         <activity android:name=".mainActivity.StoreListActivity" />
         <activity android:name=".mainActivity.PartnerDetailActivity" />
-        <activity android:name=".RealNameApprove"></activity>
+        <activity android:name=".RealNameApprove" />
+        <activity android:name=".ScanCodeActivity"></activity>
     </application>
 
 </manifest>

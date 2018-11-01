@@ -140,7 +140,7 @@ public class MeFragment extends Fragment {
                         if("1".equals(meMainDat.status) && meMainDat != null){
                             displayMe(meMainDat);
                         }else{
-                            Toast.makeText(getActivity().getApplicationContext(),meMainDat.message,Toast.LENGTH_SHORT).show();
+//                            Toast.makeText(getActivity().getApplicationContext(),meMainDat.message,Toast.LENGTH_SHORT).show();
 //                            Intent intent = new Intent(getActivity(), LoginActivity.class);
 //                            startActivity(intent);
                         }

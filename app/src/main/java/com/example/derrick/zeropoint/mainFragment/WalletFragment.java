@@ -1,13 +1,18 @@
 package com.example.derrick.zeropoint.mainFragment;
 
+import android.Manifest;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.ContextCompat;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -19,6 +24,7 @@ import android.widget.Toast;
 
 import com.example.derrick.zeropoint.LoginActivity;
 import com.example.derrick.zeropoint.R;
+import com.example.derrick.zeropoint.ScanCodeActivity;
 import com.example.derrick.zeropoint.gson.GetCodeDat;
 import com.example.derrick.zeropoint.gson.MainDatData;
 import com.example.derrick.zeropoint.gson.WalletMainDat;
@@ -32,6 +38,8 @@ import org.w3c.dom.Text;
 import java.io.IOException;
 import java.text.DecimalFormat;
 
+import cn.bingoogolapple.qrcode.core.QRCodeView;
+import cn.bingoogolapple.qrcode.zbar.ZBarView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -71,6 +79,7 @@ public class WalletFragment extends Fragment {
         getWalletMainDat();
     }
 
+
     private void initView(){
         scanLinearLayout = (LinearLayout) square.findViewById(R.id.wallet_scan_code);
         walletCanuseEdText = (TextView) square.findViewById(R.id.wallet_canuse_ed);
@@ -79,6 +88,7 @@ public class WalletFragment extends Fragment {
         walletMonthTxt = (TextView) square.findViewById(R.id.month_bill_txt);
         walletAuto = (TextView) square.findViewById(R.id.wallet_auto);
         walletAllPay = (TextView) square.findViewById(R.id.all_wait_pay);
+
     }
 
     private void initBroadCast(){
@@ -96,11 +106,38 @@ public class WalletFragment extends Fragment {
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }else{
-                    Toast.makeText(getActivity(),"开始扫描...",Toast.LENGTH_SHORT).show();
+
+                    int hasReadExternalStoragePermission = ContextCompat.checkSelfPermission(getActivity().getApplication(),Manifest.permission.CAMERA);
+                    Log.e("PERMISION_CODE",hasReadExternalStoragePermission+"***");
+                    Log.e("PERMISION_CODE",PackageManager.PERMISSION_GRANTED+"*******");
+                    if(hasReadExternalStoragePermission== PackageManager.PERMISSION_GRANTED){
+                        Intent intent = new Intent(getActivity(), ScanCodeActivity.class);
+                        startActivity(intent);
+                        Toast.makeText(getActivity(),"开始扫描...",Toast.LENGTH_SHORT).show();
+                    }else{
+                        //若没有授权，会弹出一个对话框（这个对话框是系统的，开发者不能自己定制），用户选择是否授权应用使用系统权限
+                        WalletFragment.this.requestPermissions(new String[]{Manifest.permission.CAMERA},1);
+                    }
+
+
                 }
 
             }
         });
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+//        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        if(requestCode == 1){
+            if(permissions[0].equals(Manifest.permission.CAMERA) && grantResults[0] == PackageManager.PERMISSION_GRANTED){
+                Intent intent = new Intent(getActivity(), ScanCodeActivity.class);
+                startActivity(intent);
+                Toast.makeText(getActivity(),"开始扫描...",Toast.LENGTH_SHORT).show();
+            }else{
+                Toast.makeText(getActivity(),"拒绝了...",Toast.LENGTH_SHORT).show();
+            }
+        }
     }
 
     private void getWalletMainDat(){
