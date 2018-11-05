@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     >
 
     <LinearLayout
@@ -25,6 +25,7 @@
                 android:paddingTop="15dp"
                 >
                 <TextView
+                    android:id="@+id/stag_product_name"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="奶茶"
@@ -47,9 +48,10 @@
                     android:text="分期本金(元)"
                     android:textSize="16sp"/>
                 <TextView
+                    android:id="@+id/stag_order_premium"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="3000.00"
+                    android:text=""
                     android:textSize="30sp"
                     android:textColor="#333"/>
             </LinearLayout>
@@ -69,9 +71,10 @@
                         android:layout_height="wrap_content"
                         android:text="分期期数"/>
                     <TextView
+                        android:id="@+id/stag_order_periods"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3"
+                        android:text=""
                         android:layout_marginTop="3dp"/>
                 </LinearLayout>
                 <LinearLayout
@@ -85,9 +88,10 @@
                         android:layout_height="wrap_content"
                         android:text="分期服务费(元)"/>
                     <TextView
+                        android:id="@+id/stag_order_server_premium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="3212"
+                        android:text=""
                         android:layout_marginTop="3dp"/>
                 </LinearLayout>
                 <LinearLayout
@@ -101,9 +105,10 @@
                         android:layout_height="wrap_content"
                         android:text="合计应还(元)"/>
                     <TextView
+                        android:id="@+id/stag_order_real_premium"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="31212"
+                        android:text=""
                         android:layout_marginTop="3dp"/>
                 </LinearLayout>
             </LinearLayout>

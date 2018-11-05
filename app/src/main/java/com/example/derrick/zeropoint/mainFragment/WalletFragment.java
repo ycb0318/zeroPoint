@@ -63,6 +63,7 @@ public class WalletFragment extends Fragment {
     private TextView walletMonthTxt;
     private TextView walletAuto;
     private TextView walletAllPay;
+    private WalletMainDat.dataObj myWalletMainDat = null;
 
     @Nullable
     @Override
@@ -104,27 +105,39 @@ public class WalletFragment extends Fragment {
                 SharedPreferences preferences = getActivity().getSharedPreferences("userInfo", Context.MODE_PRIVATE);
                 String token = preferences.getString("token","");
 
-                Intent intentStag = new Intent(getActivity(), StagConfirmActivity.class);
-                startActivity(intentStag);
-           /*
-               if(TextUtils.isEmpty(token)){
+//                Intent intentStag = new Intent(getActivity(), StagConfirmActivity.class);
+//                startActivity(intentStag);
+
+//                Log.i(TAG, "onClick: "+myWalletMainDat.toString());
+
+
+
+               if(TextUtils.isEmpty(token) || myWalletMainDat == null){
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }else{
 
-                    int hasReadExternalStoragePermission = ContextCompat.checkSelfPermission(getActivity().getApplication(),Manifest.permission.CAMERA);
-                    Log.e("PERMISION_CODE",hasReadExternalStoragePermission+"***");
-                    Log.e("PERMISION_CODE",PackageManager.PERMISSION_GRANTED+"*******");
-                    if(hasReadExternalStoragePermission== PackageManager.PERMISSION_GRANTED){
-                        Intent intent = new Intent(getActivity(), ScanCodeActivity.class);
-                        startActivity(intent);
-                        Toast.makeText(getActivity(),"开始扫描...",Toast.LENGTH_SHORT).show();
-                    }else{
-                        //若没有授权，会弹出一个对话框（这个对话框是系统的，开发者不能自己定制），用户选择是否授权应用使用系统权限
-                        WalletFragment.this.requestPermissions(new String[]{Manifest.permission.CAMERA},1);
-                    }
+                   if(myWalletMainDat.qd_code.type.equals("-10")){
+                       Toast.makeText(getActivity(),"您还未实名认证，请立刻去实名认证",Toast.LENGTH_SHORT).show();
+                   }else if(myWalletMainDat.qd_code.type.equals("-11")){
+                       Toast.makeText(getActivity(),"您还未设置支付密码，请立刻去设置",Toast.LENGTH_SHORT).show();
+                   }else if(myWalletMainDat.qd_code.type.equals("-12")){
+                       Toast.makeText(getActivity(),"您还未绑定银行卡，请立刻去绑卡",Toast.LENGTH_SHORT).show();
+                   }else if(myWalletMainDat.qd_code.type.equals("-13")){
+                       Toast.makeText(getActivity(),"您还未设置自动还款，请立刻去设置",Toast.LENGTH_SHORT).show();
+                   }else{
+                       int hasReadExternalStoragePermission = ContextCompat.checkSelfPermission(getActivity().getApplication(),Manifest.permission.CAMERA);
+                       if(hasReadExternalStoragePermission== PackageManager.PERMISSION_GRANTED){
+                           Intent intent = new Intent(getActivity(), ScanCodeActivity.class);
+                           startActivity(intent);
+                           Toast.makeText(getActivity(),"开始扫描...",Toast.LENGTH_SHORT).show();
+                       }else{
+                           //若没有授权，会弹出一个对话框（这个对话框是系统的，开发者不能自己定制），用户选择是否授权应用使用系统权限
+                           WalletFragment.this.requestPermissions(new String[]{Manifest.permission.CAMERA},1);
+                       }
+                   }
                 }
-             */
+
 
             }
         });
@@ -176,6 +189,7 @@ public class WalletFragment extends Fragment {
                     public void run() {
 
                         if("1".equals(walletMainDat.status) && walletMainDat != null){
+                            myWalletMainDat = walletMainDat.dataset;
                             displayMain(walletMainDat);
                         }else{
                             Toast.makeText(getActivity().getApplicationContext(),walletMainDat.message,Toast.LENGTH_SHORT).show();

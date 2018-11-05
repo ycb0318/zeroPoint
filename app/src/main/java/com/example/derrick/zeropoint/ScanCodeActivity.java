@@ -1,10 +1,17 @@
 package com.example.derrick.zeropoint;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Toast;
+
+import com.example.derrick.zeropoint.gson.MeMainDat;
+import com.example.derrick.zeropoint.gson.ScanValueDat;
+import com.google.gson.Gson;
+
+import org.json.JSONObject;
 
 import cn.bingoogolapple.qrcode.core.QRCodeView;
 import cn.bingoogolapple.qrcode.zbar.ZBarView;
@@ -25,7 +32,23 @@ public class ScanCodeActivity extends AppCompatActivity implements QRCodeView.De
     @Override
     public void onScanQRCodeSuccess(String result) {
         Toast.makeText(this,result,Toast.LENGTH_LONG).show();
-        Log.e("¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥",result+"*******");
+
+        try {
+//            JSONObject jsonObject = new JSONObject(result);
+//
+//            String jsonObjStr = jsonObject.toString();
+            ScanValueDat scanValueDat = new Gson().fromJson(result,ScanValueDat.class);
+
+            Intent intent = new Intent(this,StagConfirmActivity.class);
+            intent.putExtra("data",scanValueDat);
+
+            startActivity(intent);
+
+            Log.e("¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥",result);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
 
 
     }

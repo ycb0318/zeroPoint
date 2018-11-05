@@ -10,6 +10,8 @@ import com.example.derrick.zeropoint.gson.MainInsuranceList;
 import com.example.derrick.zeropoint.gson.MainMessageDat;
 import com.example.derrick.zeropoint.gson.MeMainDat;
 import com.example.derrick.zeropoint.gson.PartnerDetailDat;
+import com.example.derrick.zeropoint.gson.ScanValueDat;
+import com.example.derrick.zeropoint.gson.StagConfirmDat;
 import com.example.derrick.zeropoint.gson.StoreListDat;
 import com.example.derrick.zeropoint.gson.StoreListTypeDat;
 import com.example.derrick.zeropoint.gson.WalletMainDat;
@@ -201,13 +203,45 @@ public class DataHandle {
         }
 
         return null;
+
     }
+
     //处理合作伙伴详情的数据
     public static PartnerDetailDat handlePartnerDetailDatResponse(String response){
         try {
             JSONObject jsonObject = new JSONObject(response);
             String mainDatContent = jsonObject.toString();
             return new Gson().fromJson(mainDatContent,PartnerDetailDat.class);
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        return null;
+    }
+
+    //处理分期确认的数据
+    public static StagConfirmDat handleScanValue(String response){
+        try {
+            JSONObject jsonObject = new JSONObject(response);
+
+            JSONObject obj = jsonObject.getJSONObject("data").getJSONObject("data").getJSONObject("stages");
+            JSONArray arr = new JSONArray();
+
+            Iterator<String> iter = obj.keys();
+            while(iter.hasNext()){
+                String key1 = iter.next();
+                Log.i(TAG, "handleMainDataResponse: "+key1);
+                String value1 = obj.getString(key1);
+                JSONObject val = new JSONObject(value1);
+                arr.put(val);
+                Log.i(TAG, "handleMainDataResponse: "+value1);
+            }
+
+            jsonObject.getJSONObject("data").getJSONObject("data").put("stages",arr);
+//            jsonObject.put("data",arr);
+
+            String mainDatContent = jsonObject.toString();
+            return new Gson().fromJson(mainDatContent,StagConfirmDat.class);
         }catch (Exception e){
             e.printStackTrace();
         }
