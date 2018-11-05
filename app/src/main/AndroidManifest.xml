@@ -30,7 +30,8 @@
         <activity android:name=".mainActivity.StoreListActivity" />
         <activity android:name=".mainActivity.PartnerDetailActivity" />
         <activity android:name=".RealNameApprove" />
-        <activity android:name=".ScanCodeActivity"></activity>
+        <activity android:name=".ScanCodeActivity" />
+        <activity android:name=".StagConfirmActivity"></activity>
     </application>
 
 </manifest>

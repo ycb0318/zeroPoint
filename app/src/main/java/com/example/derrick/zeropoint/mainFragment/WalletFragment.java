@@ -25,6 +25,7 @@ import android.widget.Toast;
 import com.example.derrick.zeropoint.LoginActivity;
 import com.example.derrick.zeropoint.R;
 import com.example.derrick.zeropoint.ScanCodeActivity;
+import com.example.derrick.zeropoint.StagConfirmActivity;
 import com.example.derrick.zeropoint.gson.GetCodeDat;
 import com.example.derrick.zeropoint.gson.MainDatData;
 import com.example.derrick.zeropoint.gson.WalletMainDat;
@@ -102,7 +103,11 @@ public class WalletFragment extends Fragment {
             public void onClick(View view) {
                 SharedPreferences preferences = getActivity().getSharedPreferences("userInfo", Context.MODE_PRIVATE);
                 String token = preferences.getString("token","");
-                if(TextUtils.isEmpty(token)){
+
+                Intent intentStag = new Intent(getActivity(), StagConfirmActivity.class);
+                startActivity(intentStag);
+           /*
+               if(TextUtils.isEmpty(token)){
                     Intent intent = new Intent(getActivity(), LoginActivity.class);
                     startActivity(intent);
                 }else{
@@ -118,9 +123,8 @@ public class WalletFragment extends Fragment {
                         //若没有授权，会弹出一个对话框（这个对话框是系统的，开发者不能自己定制），用户选择是否授权应用使用系统权限
                         WalletFragment.this.requestPermissions(new String[]{Manifest.permission.CAMERA},1);
                     }
-
-
                 }
+             */
 
             }
         });

@@ -26,6 +26,8 @@ public class ScanCodeActivity extends AppCompatActivity implements QRCodeView.De
     public void onScanQRCodeSuccess(String result) {
         Toast.makeText(this,result,Toast.LENGTH_LONG).show();
         Log.e("¥¥¥¥¥¥¥¥¥¥¥¥¥¥¥",result+"*******");
+
+
     }
 
     @Override
