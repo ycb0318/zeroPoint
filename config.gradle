@@ -1,0 +1,47 @@
+ext {
+
+    android = [
+            compileSdkVersion: 26,
+            buildToolsVersion: "27.0.3",
+            applicationId    : "com.example.derrick.zeropoint",
+            minSdkVersion    : 15,
+            targetSdkVersion : 26,
+            versionCode      : 1,
+            versionName      : "1.0.1"
+    ]
+
+    def dependVersion = [
+            support      : "25.3.1",
+            okhttp       : "3.4.1",
+            constraint   : "1.0.2",
+            banner       : "1.4.10",
+            gson         : "2.7",
+            library      : "2.1.3",
+            glide        : "3.7.0",
+            recyclerview : "25.2.0",
+            design       : "25.3.1",
+            qrcodezbar  : "1.3.0"
+    ]
+
+    dependencies = [
+            //base
+            "appcompat-v7"            : "com.android.support:appcompat-v7:${dependVersion.support}",
+            "constraint-layout"       : "com.android.support.constraint:constraint-layout:${dependVersion.constraint}",
+            "support-v4"              : "com.android.support:support-v4:${dependVersion.support}",
+
+
+            //ui
+            "banner"                  : "com.youth.banner:banner:${dependVersion.banner}",
+            "recyclerview"            : "com.android.support:recyclerview-v7:${dependVersion.recyclerview}",
+            "design"                  : "com.android.support:design:${dependVersion.design}",
+            "qrcode-zbar"             : "cn.bingoogolapple:bga-qrcode-zbar:${dependVersion.qrcodezbar}",
+
+            //network
+            "okhttp"                  : "com.squareup.okhttp3:okhttp:${dependVersion.okhttp}",
+            "gson"                    : "com.google.code.gson:gson:${dependVersion.gson}",
+            "library"                 : "com.wang.avi:library:${dependVersion.library}",
+            "glide"                   : "com.github.bumptech.glide:glide:${dependVersion.glide}"
+    ]
+
+
+}

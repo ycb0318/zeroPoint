@@ -28,6 +28,10 @@ public class ScanCodeActivity extends AppCompatActivity implements QRCodeView.De
         initView();
     }
 
+    @Override
+    public void onCameraAmbientBrightnessChanged(boolean isDark) {
+
+    }
 
     @Override
     public void onScanQRCodeSuccess(String result) {
