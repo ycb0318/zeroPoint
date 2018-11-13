@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.derrick.zeropoint.R;
-import com.example.derrick.zeropoint.adapter.GlideImageLoader;
+import com.example.derrick.zeropoint.ui.adapter.GlideImageLoader;
 import com.example.derrick.zeropoint.model.bean.PartnerDetailDat;
 import com.example.derrick.zeropoint.util.DataHandle;
 import com.example.derrick.zeropoint.util.HttpUtil;

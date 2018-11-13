@@ -11,7 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.derrick.zeropoint.R;
-import com.example.derrick.zeropoint.adapter.RecycleViewStagAdapter;
+import com.example.derrick.zeropoint.ui.adapter.RecycleViewStagAdapter;
 import com.example.derrick.zeropoint.model.bean.ScanValueDat;
 import com.example.derrick.zeropoint.model.bean.StagConfirmDat;
 import com.example.derrick.zeropoint.util.DataHandle;

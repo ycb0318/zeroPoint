@@ -16,10 +16,10 @@ import android.widget.Toast;
 
 import com.example.derrick.zeropoint.ui.activitys.MainMessageActivity;
 import com.example.derrick.zeropoint.R;
-import com.example.derrick.zeropoint.adapter.GlideImageLoader;
-import com.example.derrick.zeropoint.adapter.RecyclerViewAdapter;
-import com.example.derrick.zeropoint.adapter.RecyclerViewPartnerAdapter;
-import com.example.derrick.zeropoint.adapter.RecyclerViewStoreAdapter;
+import com.example.derrick.zeropoint.ui.adapter.GlideImageLoader;
+import com.example.derrick.zeropoint.ui.adapter.RecyclerViewAdapter;
+import com.example.derrick.zeropoint.ui.adapter.RecyclerViewPartnerAdapter;
+import com.example.derrick.zeropoint.ui.adapter.RecyclerViewStoreAdapter;
 import com.example.derrick.zeropoint.model.bean.MainDat;
 import com.example.derrick.zeropoint.model.bean.MainDatData;
 import com.example.derrick.zeropoint.model.bean.MainDatPartner;

@@ -1,4 +1,4 @@
-package com.example.derrick.zeropoint.adapter;
+package com.example.derrick.zeropoint.ui.adapter;
 
 import android.content.Context;
 import android.content.Intent;

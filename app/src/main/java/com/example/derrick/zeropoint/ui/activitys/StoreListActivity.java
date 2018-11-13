@@ -11,7 +11,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.example.derrick.zeropoint.R;
-import com.example.derrick.zeropoint.adapter.RecyclerViewStoreDatAdapter;
+import com.example.derrick.zeropoint.ui.adapter.RecyclerViewStoreDatAdapter;
 import com.example.derrick.zeropoint.model.bean.StoreListDat;
 import com.example.derrick.zeropoint.model.bean.StoreListTypeDat;
 import com.example.derrick.zeropoint.layoutManage.MyStaggeredGridLayoutManager;
