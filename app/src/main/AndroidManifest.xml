@@ -15,23 +15,23 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity" />
-        <activity android:name=".SplashActivity">
+        <activity android:name=".ui.activitys.MainActivity" />
+        <activity android:name=".ui.activitys.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".LoginActivity" />
-        <activity android:name=".MeMoreActivity" />
-        <activity android:name=".MainMessageActivity" />
-        <activity android:name=".InsuranceWebActivity" />
-        <activity android:name=".mainActivity.StoreListActivity" />
-        <activity android:name=".mainActivity.PartnerDetailActivity" />
-        <activity android:name=".RealNameApprove" />
-        <activity android:name=".ScanCodeActivity" />
-        <activity android:name=".StagConfirmActivity"></activity>
+        <activity android:name=".ui.activitys.LoginActivity" />
+        <activity android:name=".ui.activitys.MeMoreActivity" />
+        <activity android:name=".ui.activitys.MainMessageActivity" />
+        <activity android:name=".ui.activitys.InsuranceWebActivity" />
+        <activity android:name=".ui.activitys.StoreListActivity" />
+        <activity android:name=".ui.activitys.PartnerDetailActivity" />
+        <activity android:name=".ui.activitys.RealNameApprove" />
+        <activity android:name=".ui.activitys.ScanCodeActivity" />
+        <activity android:name=".ui.activitys.StagConfirmActivity"></activity>
     </application>
 
 </manifest>

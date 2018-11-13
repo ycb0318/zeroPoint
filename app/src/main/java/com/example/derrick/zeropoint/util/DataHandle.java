@@ -2,28 +2,23 @@ package com.example.derrick.zeropoint.util;
 
 import android.util.Log;
 
-import com.example.derrick.zeropoint.gson.GetCodeDat;
-import com.example.derrick.zeropoint.gson.LoginDat;
-import com.example.derrick.zeropoint.gson.MainDat;
-import com.example.derrick.zeropoint.gson.MainDatStoreList;
-import com.example.derrick.zeropoint.gson.MainInsuranceList;
-import com.example.derrick.zeropoint.gson.MainMessageDat;
-import com.example.derrick.zeropoint.gson.MeMainDat;
-import com.example.derrick.zeropoint.gson.PartnerDetailDat;
-import com.example.derrick.zeropoint.gson.ScanValueDat;
-import com.example.derrick.zeropoint.gson.StagConfirmDat;
-import com.example.derrick.zeropoint.gson.StoreListDat;
-import com.example.derrick.zeropoint.gson.StoreListTypeDat;
-import com.example.derrick.zeropoint.gson.WalletMainDat;
+import com.example.derrick.zeropoint.model.bean.GetCodeDat;
+import com.example.derrick.zeropoint.model.bean.LoginDat;
+import com.example.derrick.zeropoint.model.bean.MainDat;
+import com.example.derrick.zeropoint.model.bean.MainInsuranceList;
+import com.example.derrick.zeropoint.model.bean.MainMessageDat;
+import com.example.derrick.zeropoint.model.bean.MeMainDat;
+import com.example.derrick.zeropoint.model.bean.PartnerDetailDat;
+import com.example.derrick.zeropoint.model.bean.StagConfirmDat;
+import com.example.derrick.zeropoint.model.bean.StoreListDat;
+import com.example.derrick.zeropoint.model.bean.StoreListTypeDat;
+import com.example.derrick.zeropoint.model.bean.WalletMainDat;
 import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
-import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.List;
 
 /**
  * Created by derrick on 2018/8/13.

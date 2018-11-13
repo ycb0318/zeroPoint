@@ -2,8 +2,6 @@ package com.example.derrick.zeropoint.adapter;
 
 import android.content.Context;
 import android.content.Intent;
-import android.media.Image;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,9 +11,9 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.derrick.zeropoint.R;
-import com.example.derrick.zeropoint.gson.MainDatPartner;
+import com.example.derrick.zeropoint.model.bean.MainDatPartner;
 import com.example.derrick.zeropoint.layoutManage.GlideRoundTransform;
-import com.example.derrick.zeropoint.mainActivity.PartnerDetailActivity;
+import com.example.derrick.zeropoint.ui.activitys.PartnerDetailActivity;
 import com.example.derrick.zeropoint.util.HttpUtil;
 
 import java.util.List;

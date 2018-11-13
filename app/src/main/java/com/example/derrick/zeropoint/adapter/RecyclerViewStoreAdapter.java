@@ -11,8 +11,8 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.derrick.zeropoint.R;
-import com.example.derrick.zeropoint.gson.MainDatStoreList;
-import com.example.derrick.zeropoint.mainActivity.StoreListActivity;
+import com.example.derrick.zeropoint.model.bean.MainDatStoreList;
+import com.example.derrick.zeropoint.ui.activitys.StoreListActivity;
 import com.example.derrick.zeropoint.util.HttpUtil;
 
 import java.util.List;

@@ -1,7 +1,6 @@
 package com.example.derrick.zeropoint.adapter;
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,9 +10,7 @@ import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
 import com.example.derrick.zeropoint.R;
-import com.example.derrick.zeropoint.gson.MainDatStoreList;
-import com.example.derrick.zeropoint.gson.StoreListDat;
-import com.example.derrick.zeropoint.mainActivity.StoreListActivity;
+import com.example.derrick.zeropoint.model.bean.StoreListDat;
 import com.example.derrick.zeropoint.util.HttpUtil;
 
 import java.util.List;

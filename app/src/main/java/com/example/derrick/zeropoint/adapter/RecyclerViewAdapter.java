@@ -3,27 +3,21 @@ package com.example.derrick.zeropoint.adapter;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
-import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
-import com.example.derrick.zeropoint.InsuranceWebActivity;
-import com.example.derrick.zeropoint.LoginActivity;
+import com.example.derrick.zeropoint.ui.activitys.InsuranceWebActivity;
+import com.example.derrick.zeropoint.ui.activitys.LoginActivity;
 import com.example.derrick.zeropoint.R;
-import com.example.derrick.zeropoint.gson.MainInsuranceData;
+import com.example.derrick.zeropoint.model.bean.MainInsuranceData;
 import com.example.derrick.zeropoint.util.HttpUtil;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

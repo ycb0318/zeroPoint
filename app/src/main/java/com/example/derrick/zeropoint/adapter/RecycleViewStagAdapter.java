@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.derrick.zeropoint.R;
-import com.example.derrick.zeropoint.gson.StagConfirmDat;
+import com.example.derrick.zeropoint.model.bean.StagConfirmDat;
 
 import java.util.List;
 
