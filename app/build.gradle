@@ -47,5 +47,4 @@ dependencies {
     compile rootProject.ext.dependencies["glide"]
 
 
-
 }

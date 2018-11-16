@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.derrick.zeropoint.base.BaseFragment;
 import com.example.derrick.zeropoint.ui.activitys.MainMessageActivity;
 import com.example.derrick.zeropoint.R;
 import com.example.derrick.zeropoint.ui.adapter.GlideImageLoader;
@@ -36,6 +37,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
@@ -46,11 +48,13 @@ import okhttp3.Response;
  * Created by derrick on 2018/8/8.
  */
 
-public class MainFragment extends Fragment {
+public class MainFragment extends BaseFragment {
 
     private List<String> viewPagerUri = new ArrayList<>();
-    private Banner banner;
-    private View square;
+
+    @BindView(R.id.banner)
+    Banner banner;
+//    private View square;
     private TextView titleBarRightInfo;
     private RecyclerView recyclerView;
     private RecyclerView recyclerViewStore;
@@ -64,26 +68,35 @@ public class MainFragment extends Fragment {
     private View includeStoreBar;
     private View includePartnerBar;
 
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        square = inflater.inflate(R.layout.main_fragment,container,false);
-        initView();
-        initClick();
-        return square;
+//    @Nullable
+//    @Override
+//    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+//        square = inflater.inflate(R.layout.main_fragment,container,false);
+//        initView();
+//        initClick();
+//        return square;
+//
+//    }
+//
+//    @Override
+//    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+//        super.onActivityCreated(savedInstanceState);
+//        getMainData();
+//        getMainInsuranceData();
+//    }
 
+
+    @Override
+    protected int getLayout() {
+        return R.layout.main_fragment;
     }
 
-    @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        getMainData();
-        getMainInsuranceData();
-    }
 
-//    初始化view
-    private void initView(){
-        banner = (Banner) square.findViewById(R.id.banner);
+
+    //    初始化view
+    @Override
+    protected void initView(){
+//        banner = (Banner) square.findViewById(R.id.banner);
         titleBarRightInfo = (TextView) square.findViewById(R.id.main_fragment_titlebar_right);
         recyclerView = (RecyclerView) square.findViewById(R.id.main_fragment_recyclerview);
         partnerRecycleView = (RecyclerView) square.findViewById(R.id.main_fragment_partner_recyclerview);
@@ -95,7 +108,8 @@ public class MainFragment extends Fragment {
         includePartnerBar = (View) square.findViewById(R.id.include_partner_bar);
     }
 
-    private void initClick(){
+    @Override
+    protected void initEvent() {
         messageLinear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -104,6 +118,22 @@ public class MainFragment extends Fragment {
             }
         });
     }
+
+    @Override
+    protected void getData() {
+        getMainData();
+        getMainInsuranceData();
+    }
+
+    //    private void initClick(){
+//        messageLinear.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent(getActivity(), MainMessageActivity.class);
+//                startActivity(intent);
+//            }
+//        });
+//    }
 //    初始化recyclerView 保险公司列表;
     private void initRecyclerView(){
 

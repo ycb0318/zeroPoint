@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import com.example.derrick.zeropoint.R;
+import com.example.derrick.zeropoint.base.BaseActivity;
 import com.example.derrick.zeropoint.model.bean.GetCodeDat;
 import com.example.derrick.zeropoint.model.bean.LoginDat;
 import com.example.derrick.zeropoint.util.DataFormat;
@@ -21,38 +22,63 @@ import com.example.derrick.zeropoint.util.HttpUtil;
 
 import java.io.IOException;
 
+import butterknife.BindView;
+import butterknife.OnClick;
 import okhttp3.Call;
 import okhttp3.Callback;
 import okhttp3.FormBody;
 import okhttp3.RequestBody;
 import okhttp3.Response;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity extends BaseActivity {
 
     private static final String TAG = "LoginActivity";
 
-    private LinearLayout saveLinearLayout;
-    private LinearLayout phoneCodeLinearLayout;
-    private EditText editTextPhone;
-    private EditText editTextCode;
+    @BindView(R.id.saveDat)
+    LinearLayout saveLinearLayout;
+
+    @BindView(R.id.getPhoneCode)
+    LinearLayout phoneCodeLinearLayout;
+
+    @BindView(R.id.et_phone)
+    EditText editTextPhone;
+
+    @BindView(R.id.et_phone_code)
+    EditText editTextCode;
 
 
+//    private LinearLayout saveLinearLayout;
+//    private LinearLayout phoneCodeLinearLayout;
+//    private EditText editTextPhone;
+//    private EditText editTextCode;
+
+
+
+//    @Override
+//    protected void onCreate(Bundle savedInstanceState) {
+//        super.onCreate(savedInstanceState);
+//        setContentView(R.layout.activity_login);
+//        initView();
+//    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
-        initView();
+    protected int getLayout() {
+        return R.layout.activity_login;
     }
 
 
+    @Override
+    protected void initView(){
+//        saveLinearLayout = (LinearLayout) findViewById(R.id.saveDat);
+//        phoneCodeLinearLayout = (LinearLayout) findViewById(R.id.getPhoneCode);
+//        editTextPhone = (EditText) findViewById(R.id.et_phone);
+//        editTextCode = (EditText) findViewById(R.id.et_phone_code);
 
-    private void initView(){
-        saveLinearLayout = (LinearLayout) findViewById(R.id.saveDat);
-        phoneCodeLinearLayout = (LinearLayout) findViewById(R.id.getPhoneCode);
-        editTextPhone = (EditText) findViewById(R.id.et_phone);
-        editTextCode = (EditText) findViewById(R.id.et_phone_code);
 
+    }
+
+    @Override
+    protected void initEvent() {
         phoneCodeLinearLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -72,7 +98,6 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
     }
-
 
     private void doLogin(){
         String phoneStr = editTextPhone.getText().toString();

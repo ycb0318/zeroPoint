@@ -31,7 +31,8 @@
         <activity android:name=".ui.activitys.PartnerDetailActivity" />
         <activity android:name=".ui.activitys.RealNameApprove" />
         <activity android:name=".ui.activitys.ScanCodeActivity" />
-        <activity android:name=".ui.activitys.StagConfirmActivity"></activity>
+        <activity android:name=".ui.activitys.StagConfirmActivity" />
+        <activity android:name=".base.BaseActivity"></activity>
     </application>
 
 </manifest>
